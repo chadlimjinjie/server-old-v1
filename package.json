@@ -5,5 +5,10 @@
     "react-dom": "",
     "react-router-dom": ""
   },
-  "type": "module"
+  "devDependencies": {
+    "@babel/cli": "",
+    "@babel/core": "",
+    "@babel/node": "",
+    "@babel/preset-env": "",
+  }
 }

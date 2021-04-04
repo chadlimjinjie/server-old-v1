@@ -1,20 +1,17 @@
-import express from 'express';
-import ReactDOMServer from 'react-dom';
+const express = require('express');
+const ReactDOMServer = require('react-dom/server');
 
 const app = express();
 
-// Views
-import Index from './src/index.js';
-
 // Routes
-import login from './routes/login.js';
-import register from './routes/register.js';
+const login = require('./routes/login');
+const register = require('./routes/register');
 
 app.use('/login', login);
 app.use('/register', register);
 
 app.get('/', (req, res) => {
-  res.send(ReactDOMServer.renderToString(<Index />))
+  res.send()
 })
 
 app.listen(8080, () => {
