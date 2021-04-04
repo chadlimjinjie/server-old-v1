@@ -1,20 +1,11 @@
-
-const express = require('express');
-const path = require('path');
+from express import 'express';
 
 const app = express();
 
-// Routes
-const login = require('./routes/login');
-const register = require('./routes/register');
-
-app.use('/login', login);
-app.use('/register', register);
-
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+  res.send(1+1)
 })
 
-app.listen(8080, () => {
+app.listen(8080, '0.0.0.0', () => {
   console.log('Server running')
 })

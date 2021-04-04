@@ -1,18 +1,5 @@
 {
   "dependencies": {
-    "express": "",
-    "react": "",
-    "react-dom": "",
-    "react-router-dom": ""
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
-  "devDependencies": {
-    "@babel/cli": "",
-    "@babel/core": "",
-    "@babel/preset-env": ""
+    "express": ""
   }
 }
