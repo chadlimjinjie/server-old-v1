@@ -1,5 +1,5 @@
 const express = require('express');
-const ReactDOMServer = require('react-dom/server');
+const path = require('path');
 
 const app = express();
 
@@ -11,7 +11,8 @@ app.use('/login', login);
 app.use('/register', register);
 
 app.get('/', (req, res) => {
-  res.send()
+  console.log(__dirname)
+  res.sendFile(path.join(__dirname, 'website', 'public', 'index.html'))
 })
 
 app.listen(8080, () => {

@@ -5,4 +5,4 @@ router.get('/', (req, res) => {
   res.send('Register home page')
 })
 
-module.export = router;
+module.exports = router;
