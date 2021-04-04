@@ -1,5 +1,13 @@
 {
+  "type": "module",
   "dependencies": {
-    "express": ""
+    "express": "",
+    "react": "",
+    "react-dom": "",
+    "react-dom-server": ""
+  },
+  "devDependencies": {
+    "@babel/cli": "",
+    "@babel/core": ""
   }
 }
