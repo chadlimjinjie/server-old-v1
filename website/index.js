@@ -1,3 +1,4 @@
+
 const express = require('express');
 const path = require('path');
 
@@ -11,8 +12,7 @@ app.use('/login', login);
 app.use('/register', register);
 
 app.get('/', (req, res) => {
-  console.log(__dirname)
-  res.sendFile(path.join(__dirname, 'website', 'public', 'index.html'))
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })
 
 app.listen(8080, () => {
