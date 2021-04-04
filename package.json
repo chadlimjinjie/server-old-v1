@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "express": "",
+    "react": "",
+    "react-dom": "",
+    "react-router-dom": ""
+  },
+  "type": "module"
+}
