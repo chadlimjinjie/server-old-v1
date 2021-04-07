@@ -2,7 +2,7 @@ import os
 import discord
 import requests
 from discord.ext import commands
-
+from keep_alive import keep_alive
 
 def MULTILINE(text):
   return f'```{text}```'
@@ -34,6 +34,5 @@ async def on_command_error(ctx, error):
 @client.command()
 async def test(ctx):
   await ctx.send('Hello!')
-
 
 client.run(os.getenv('TOKEN'), bot=True, reconnect=True)
