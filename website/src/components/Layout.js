@@ -26,7 +26,7 @@ export default class Layout extends Component {
                 <div className="navbar-nav">
                   <a className="nav-link" href="/">Home <i className="fas fa-home"></i></a>
                   <a className="nav-link" href="Register">Register <i className="fas fa-file-signature"></i></a>
-                  <a className="nav-link" href="https://stats.uptimerobot.com/kOz7VunBNL" target="_blank">Stats <i class="far fa-chart-bar"></i></a>
+                  <a className="nav-link" href="https://stats.uptimerobot.com/kOz7VunBNL" target="_blank">Stats <i className="far fa-chart-bar"></i></a>
                 </div>
               </div>
             </div>

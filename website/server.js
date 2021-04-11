@@ -6,8 +6,21 @@ const api = require('./routes/api');
 const server = express();
 server.use(express.json());
 
-const DEV = false;
+const DEV = true;
 const PORT = 8080;
+
+/*
+const connection = mysql.createConnection({
+  host: 'remotemysql.com',
+  port: 3306,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS
+});
+
+connection.connect(() => {
+  console.log('Connected')
+});
+*/
 
 const app = next({ dev:DEV, dir:'./website' });
 const handle = app.getRequestHandler(); 
