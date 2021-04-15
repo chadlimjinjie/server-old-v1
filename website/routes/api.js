@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/users', (req, res) => {
-  connection.query('SELECT first_name, last_name FROM users', (error, result) => {
+  connection.query('SELECT user_id, address FROM users', (error, result) => {
     console.log('error', error);
     console.log('result', result);
     if (!error) {
@@ -23,8 +23,11 @@ router.get('/users', (req, res) => {
 });
 
 router.get('/users/:id', (req, res) => {
-  const {id} = req.params;
-  connection.query(`SELECT first_name, last_name FROM users WHERE user_id=${id}`, (error, result) => {
+  let {id} = req.params;
+  console.log(id);
+  console.log(parseInt(id));
+  console.log(typeof(parseInt(id)));
+  connection.query('SELECT user_id, address FROM users WHERE user_id=?', [parseInt(id)], (error, result) => {
     console.log('error', error);
     console.log('result', result);
     if (!error) {
@@ -34,6 +37,10 @@ router.get('/users/:id', (req, res) => {
     }
   });
 });
+
+router.post('/createWallet', (req, res) => {
+  res.end('Wallet created');
+})
 
 router.get('/test', (req, res) => {
   app.render(req, res, '/index');

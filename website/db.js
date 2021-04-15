@@ -1,5 +1,12 @@
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
+/*
+https://remotemysql.com/phpmyadmin/index.php?db=MCWKiOrWYL
+*/
+
+/*
+It is likely best to use createPool instead of createConnection for the connection.
+*/
 const connection = mysql.createPool({
   host: 'remotemysql.com',
   port: 3306,

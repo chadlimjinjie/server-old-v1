@@ -15,7 +15,8 @@ def STRIKETHROUGH(text):
 
 # https://discord.com/api/oauth2/authorize?client_id=788295960870125608&permissions=0&scope=bot
 
-client = commands.Bot(command_prefix='.')
+intents = discord.Intents.all()
+client = commands.Bot(command_prefix='.', intents=intents)
 
 @client.event
 async def on_ready():
@@ -23,6 +24,8 @@ async def on_ready():
   await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='.'))
   client.load_extension('BotInfo')
   client.load_extension('CRO_CHAIN')
+  client.load_extension('Test')
+  print('Cogs loaded')
 
 @client.event
 async def on_command_error(ctx, error):
