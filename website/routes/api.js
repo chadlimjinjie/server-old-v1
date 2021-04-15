@@ -38,10 +38,6 @@ router.get('/users/:id', (req, res) => {
   });
 });
 
-router.post('/createWallet', (req, res) => {
-  res.end('Wallet created');
-})
-
 router.get('/test', (req, res) => {
   app.render(req, res, '/index');
 });

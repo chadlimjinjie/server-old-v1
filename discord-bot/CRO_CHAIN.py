@@ -4,20 +4,6 @@ from discord.ext import commands, tasks
 import os
 import subprocess
 import mysql.connector
-#https://crypto.org/explorer/api/v1/validators?page=1
-#https://crypto.org/explorer/api/v1/accounts/cro195qdmaeu97dzeyjed8f9a9qhl7mngwcpwa2dyw
-#https://api.coingecko.com/api/v3/simple/price?ids=crypto-com-chain&vs_currencies=sgd
-#https://crypto.com/price/coin-data/icon/CRO/color_icon.png
-
-def create_wallet(user_id):
-  create_wallet = subprocess.run(['./bin/chain-maind', 'keys', 'add', str(user_id)], input=bytes(f'{user_id}\ny\n{user_id}\n{user_id}\n', 'utf-8'), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-  #print(create_wallet.stdout)
-  #print(create_wallet.stderr)
-  address = create_wallet.stdout.decode('utf-8').split(' ')[8].strip('\n')
-  mnemonic_phrase = create_wallet.stderr.decode('utf-8').split('\n\n')[2].strip('\n')
-  #print('address > ', address)
-  #print('mnemonic_phrase', mnemonic_phrase)
-  return address, mnemonic_phrase
 
 connection = mysql.connector.connect(
   host='remotemysql.com',
@@ -35,32 +21,6 @@ class CRO_CHAIN(commands.Cog, name='Crypto.org Chain'):
     self.price = None
     self.update.start()
     self.image = requests.get('https://crypto.com/price/coin-data/icon/CRO/color_icon.png').content
-
-  @commands.Cog.listener()
-  async def on_member_join(self, member):
-    print(member)
-    print(member.id)
-    user_id = member.id
-    connection.connect()
-    cursor = connection.cursor()
-    cursor.execute(f"SELECT user_id, address, phrase FROM users WHERE user_id={user_id}")
-    result = cursor.fetchone()
-    
-    if result is None:
-      print('Creating wallet...')
-      address, mnemonic_phrase = create_wallet(user_id)
-      print(address)
-      print(mnemonic_phrase)
-      sql = ("INSERT INTO users (user_id, address, phrase) VALUES (%s, %s, %s)")
-      values = (user_id, address, mnemonic_phrase)
-      try:
-        cursor.execute(sql, values)
-        connection.commit()
-        print('Wallet created')
-      except Exception as e:
-        print(e)
-    connection.close()
-    
 
   @commands.command()
   async def rewards(self, ctx):
